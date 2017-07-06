@@ -31,3 +31,8 @@ org.itglance.docsea
 			├──web
 				├──rest   (Controller)
 ```
+
+For client side:
+
+cd client
+npm install
