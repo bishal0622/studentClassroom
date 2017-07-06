@@ -1,0 +1,75 @@
+<section class="col-md-4">
+  <div class="col-md-10">
+    <div class="text-center">
+      <h1>
+        Student Insert
+      </h1>
+    </div>
+    <div>
+      <form name="form" role="form" (ngSubmit)="save()" #form="ngForm">
+        <div class="form-group">
+          <label class="form-control-label" for="firstName">First Name: </label>
+          <input type="text" class="form-control" id="firstName" [(ngModel)]="classroom.student.firstName"
+                    name="firstName" #firstName="ngModel"/>
+        </div>
+        <div class="form-group">
+          <label class="form-control-label" for="lastName">Last Name: </label>
+          <input type="text" class="form-control" id="lastName" [(ngModel)]="classroom.student.lastName"
+                    name="lastName" #lastName="ngModel"/>
+        </div>
+        <div class="form-group">
+          <label class="form-control-label" for="grade">Age: </label>
+          <input type="number" class="form-control" id="grade" [(ngModel)]="classroom.student.grade"
+                    name="grade" #grade="ngModel"/>
+        </div>
+        <div *ngIf="checkU" class="form-group">
+          <label class="form-control-label" for="section"> Section: </label>
+          <input type="number" class="form-control" id="section" [(ngModel)]="classroom.section"
+                    name="section" #section="ngModel"/>
+        </div>
+        <button *ngIf="checkS" type="submit" class="btn btn-primary">Save</button>
+        <div  *ngIf="checkU" class="btn-group flex-btn-group-container">
+          <button class="btn btn-warning" (click)="change(classroom.id)">Update</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="col-md-8">
+  <div>
+    <h2>Career Profile Display</h2>
+
+    <div class="table-responsive" *ngIf="classrooms">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Id</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Age</th>
+          <th>Section</th>
+        </tr>
+        </thead>
+        <tbody *ngIf="classrooms">
+        <tr *ngFor="let classform of classrooms">
+          <td>{{classform.id}}</td>
+          <td>{{classform.student.firstName}}</td>
+          <td>{{classform.student.lastName}}</td>
+          <td>{{classform.student.grade}}</td>
+          <td>{{classform.section}}</td>
+          <td></td>
+          <td class="text-right">
+            <div class="btn-group flex-btn-group-container">
+                <button class="btn btn-danger" (click)="delete(classform.id)">Delete</button>
+            </div>
+            <div class="btn-group flex-btn-group-container">
+                <button class="btn btn-warning" (click)="update(classform.id)">Edit</button>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
